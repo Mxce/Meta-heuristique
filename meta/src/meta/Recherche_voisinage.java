@@ -5,10 +5,10 @@ import java.util.Iterator;
 
 public class Recherche_voisinage 
 {
-	public static Solution recherche(Graph graphe)
+	public static Solution recherche(Graph graphe, Solution solution)
 	{
 		// on recup la borne sup
-		Solution solution = Borne_finder.find_sup(graphe) ;
+
 		
 		// on parcourt tous les solution nodes
 		ArrayList<Solution_Node> listeNode = solution.getListe_nodes() ;
@@ -22,11 +22,11 @@ public class Recherche_voisinage
 			Solution sol_prec = solution ;
 			while(cond)
 			{
-				System.out.println("while");
+				//System.out.println("while");
 				// on bouge les departs de la solution
 				Solution sol_test = sol_prec.decale(1,sn, graphe) ;
 				
-				System.out.println("sol_test: "+sol_test);
+				//System.out.println("sol_test: "+sol_test);
 				
 				// si elle n'est pas valide, on s'arrete et on renvoie la solution precedente
 				if(!sol_test.getValide())

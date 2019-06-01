@@ -15,7 +15,7 @@ public class Principale
 		///TODO: borne sup en lançant les route une après l'autre et checker si le sup est valide (il doit l'etre!!)
 		
 		
-		Graph graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/exemple.txt");
+		Graph graphe = Lecteur.readData("Instances\\exemple.txt");
 		
 		
 		// test checker
@@ -39,8 +39,12 @@ public class Principale
 		// sup
 		System.out.println("sup: "+Borne_finder.find_sup(graphe));
 		
+		Solution solution_sup = Borne_finder.find_sup(graphe) ;
 		// intensification
-		System.out.println("intens: "+ Recherche_voisinage.recherche(graphe));
+		System.out.println("intens: "+ Recherche_voisinage.recherche(graphe,solution_sup));
+		
+		
+		System.out.println("divers: "+ Diversification.diversification(graphe));
 	/*	
 		graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/dense_10_30_3_7.full");
 		System.out.println("inf: "+Borne_finder.find_inf(graphe));

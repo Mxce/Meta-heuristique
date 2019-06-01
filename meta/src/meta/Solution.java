@@ -79,6 +79,10 @@ public class Solution {
 		return -1 ;
 	}
 	
+	public int getObjectif() {
+		return this.objectif;
+	}
+	
 	public boolean getValide()
 	{
 		return this.valide ;
