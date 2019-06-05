@@ -42,7 +42,7 @@ public class Checker {
 					Route_temps route_t_courante = node_sol_courant.getNode().getRoute() ;
 					ArrayList<Edge> route_courante = route_t_courante.getRoute() ;
 					int popu = node_sol_courant.getNode().getPopulation() ;
-					int flot_max = node_sol_courant.getNode().getCapaRoute() ;
+					int flot_max = node_sol_courant.getTauxEvac() ; //TODO
 					
 					int flot_prec ;
 					

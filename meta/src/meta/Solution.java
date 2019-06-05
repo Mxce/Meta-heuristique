@@ -47,10 +47,10 @@ public class Solution {
 				decalage = true;
 			}
 			if(decalage == true) {
-				listeNode.add(new Solution_Node(n.getNode(),n.getDate()-d)) ;
+				listeNode.add(new Solution_Node(n.getNode(),n.getDate()-d,n.getTauxEvac())) ;
 			}
 			else {
-				listeNode.add(new Solution_Node(n.getNode(),n.getDate())) ;
+				listeNode.add(new Solution_Node(n.getNode(),n.getDate(),n.getTauxEvac())) ;
 			}
 		}
 		return new Solution(this.nom,this.nbSommet,listeNode,this.objectif-d,0,this.methode,graphe) ;

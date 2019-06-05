@@ -25,7 +25,7 @@ public class Diversification {
 		ArrayList<Solution_Node> liste_solnode= new ArrayList<Solution_Node>();
 		int temps = 0 ;
 		for (Node_evac ne : lneRand) {
-			liste_solnode.add(new Solution_Node(ne,temps));
+			liste_solnode.add(new Solution_Node(ne,temps,ne.getCapaRoute())); //TODO: verifier
 			int t = find_temps(ne) ;
 			temps = temps+t ;
 		}

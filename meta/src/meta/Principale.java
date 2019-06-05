@@ -21,9 +21,9 @@ public class Principale
 		// test checker
 		// on créé une solution à la main mais il faudrait la lire !!
 		ArrayList<Solution_Node> sol_node = new ArrayList<Solution_Node>() ;
-		sol_node.add(new Solution_Node(graphe.findNodeEvacID(1),3));
-		sol_node.add(new Solution_Node(graphe.findNodeEvacID(2),0));
-		sol_node.add(new Solution_Node(graphe.findNodeEvacID(3),0));	
+		sol_node.add(new Solution_Node(graphe.findNodeEvacID(1),3, graphe.findNodeEvacID(1).getCapaRoute()));
+		sol_node.add(new Solution_Node(graphe.findNodeEvacID(2),0,graphe.findNodeEvacID(1).getCapaRoute()));
+		sol_node.add(new Solution_Node(graphe.findNodeEvacID(3),0,graphe.findNodeEvacID(1).getCapaRoute()));	
 		
 	//	Solution sol = new Solution("S1 de mariejo", 3, sol_node, true, 37, 1000, "a la main comme des nazes");
 		

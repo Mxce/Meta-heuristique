@@ -15,7 +15,7 @@ public class Borne_finder
 		while(it.hasNext())
 		{
 			Node_evac ne = it.next();
-			liste_solnode.add(new Solution_Node(ne,temps));
+			liste_solnode.add(new Solution_Node(ne,temps,ne.getCapaRoute()));
 			int t = find_temps(ne) ;
 			temps = temps+t ;
 			
@@ -58,7 +58,7 @@ public class Borne_finder
 		while(it.hasNext())
 		{
 			Node_evac ne = it.next();
-			liste_solnode.add(new Solution_Node(ne,0));
+			liste_solnode.add(new Solution_Node(ne,0,ne.getCapaRoute()));
 			int t = find_temps(ne) ;
 			if(t>temps)
 			{
