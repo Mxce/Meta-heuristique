@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class Graph 
 {
 	
-	//TODO: si l'algo est trop lent -> faire une map
+	//TODO: si l'algo est trop lent -> faire une map // pas besoin car on utilise directement les listes associées aux nodes, acces direct
 	
 	
 	private ArrayList<Node> nodes ;
@@ -15,6 +15,9 @@ public class Graph
 	private ArrayList<Node_evac> nodes_evac ;
 	
 	private int time ;
+	
+	private int average_Edge_Time;
+	private int average_Road_Size;
 	
 	// -------- Constructeur
 	public Graph()
@@ -85,6 +88,34 @@ public class Graph
 	public void addArc (Edge e)
 	{
 		this.edges.add(e) ;
+	}
+	
+	public void setAverages() {
+		
+		//calcul du temps moyen d'un edge
+		int time = 0;
+		for (Edge el: this.edges) {
+			time = time +  el.getLength();
+			System.out.println ("ajoute : " + el.getLength());	
+			}
+			System.out.println("divise par:" + this.edges.size());
+		this.average_Edge_Time = time/this.edges.size();
+		System.out.println("average edge time : " + this.average_Edge_Time);
+		
+		//calcul de la taille moyenne d'une route 
+		int taille = 0;
+		for (Node_evac ne : this.nodes_evac) {
+			taille = taille + ne.getRouteLength();
+		}
+		this.average_Road_Size = taille/this.nodes_evac.size();
+	}
+	
+	public int getAverageEdgeTime() {
+		return this.average_Edge_Time;
+	}
+	
+	public int getAverageRoadSize() {
+		return this.average_Road_Size;
 	}
 	
 	public String toString()

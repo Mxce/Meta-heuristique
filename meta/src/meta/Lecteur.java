@@ -114,7 +114,7 @@ public class Lecteur
 		{
 			e.printStackTrace();
 		}
-		
+		graphe.setAverages();
 		return graphe ;
 	}
 }

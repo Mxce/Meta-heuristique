@@ -31,7 +31,7 @@ public class Principale
 		//boolean valide = Checker.check(sol, graphe) ;
 		
 		//System.out.println(valide);
-		
+		System.out.println("graphe de test");
 		graphe = Lecteur.readData("Instances\\dense_10_30_3_7.full");
 		
 		// test bornes

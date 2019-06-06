@@ -7,9 +7,8 @@ public class Intensification
 {
 	public static Solution recherche(Graph graphe, Solution solution)
 	{
-		// on recup la borne sup
-
-		
+		int decal = (graphe.getAverageEdgeTime()*graphe.getAverageRoadSize())/20;
+		System.out.println("decal : "+decal);
 		// on parcourt tous les solution nodes
 		ArrayList<Solution_Node> listeNode = solution.getListe_nodes() ;
 		Iterator<Solution_Node> it = listeNode.iterator() ;
@@ -22,9 +21,9 @@ public class Intensification
 			Solution sol_prec = solution ;
 			while(cond)
 			{
-				System.out.println("while");
+				//System.out.println("while");
 				// on bouge les departs de la solution
-				Solution sol_test = sol_prec.decale(100,sn, graphe) ;
+				Solution sol_test = sol_prec.decale(decal,sn, graphe) ;
 				
 				//System.out.println("sol_test: "+sol_test);
 				
