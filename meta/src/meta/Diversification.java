@@ -1,5 +1,7 @@
 package meta;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -36,8 +38,11 @@ public class Diversification {
 
 	public static Solution diversification(Graph graphe)
 	{
+		Instant debut = Instant.now();
+		
 		Solution solution = null;
-		int nbIt = 1;
+		int nbTotIt = 1;
+		int nbIt = nbTotIt;
 		
 		while (nbIt>0) {
 			Solution soltemp = Intensification.recherche(graphe, find_sup_random(graphe));
@@ -47,8 +52,13 @@ public class Diversification {
 			nbIt--;
 			System.out.println("It restantes : " + nbIt);
 		}
-
-			
+		solution.setMethode("Diversification(nbIt=" + nbTotIt + ")") ;
+		
+		
+		Instant fin = Instant.now();
+		solution.setNom("intens_"+ graphe.getFilename() );
+		solution.setMethode("Intensification");
+		solution.setTempsCalcul(Duration.between(debut, fin).toMillis());
 		return solution ;	
 	
 	}

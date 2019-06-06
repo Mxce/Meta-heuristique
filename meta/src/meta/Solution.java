@@ -13,10 +13,10 @@ public class Solution {
 	private ArrayList<Solution_Node> liste_sol_node ;
 	private boolean valide ;
 	private int objectif ;
-	private int temps_calcul ;
+	private long temps_calcul ;
 	private String methode ;
 	
-	public Solution (String nom, int nbSommet, ArrayList<Solution_Node> liste_sol_node, boolean valide, int objectif, int temps_calcul, String methode)
+	public Solution (String nom, int nbSommet, ArrayList<Solution_Node> liste_sol_node, boolean valide, int objectif, long temps_calcul, String methode)
 	{
 		this.nom = nom ;
 		this.nbSommet = nbSommet ;
@@ -26,7 +26,7 @@ public class Solution {
 		this.temps_calcul = temps_calcul ;
 		this.methode = methode ;
 	}
-	public Solution (String nom, int nbSommet, ArrayList<Solution_Node> liste_sol_node, int objectif, int temps_calcul, String methode,Graph graphe)
+	public Solution (String nom, int nbSommet, ArrayList<Solution_Node> liste_sol_node, int objectif, long temps_calcul, String methode,Graph graphe)
 	{
 		this.nom = nom ;
 		this.nbSommet = nbSommet ;
@@ -37,6 +37,18 @@ public class Solution {
 		this.valide=Checker.check(this, graphe);
 	}
 	
+	
+	public void setNom (String n) {
+		this.nom = n;
+	}
+	
+	public void setTempsCalcul (long l) {
+		this.temps_calcul = l;
+	}
+	
+	public void setMethode (String s) {
+		this.methode=s;
+	}
 	// ------------------ décalage
 	public Solution decale(int d, Solution_Node sn, Graph graphe)
 	{

@@ -1,5 +1,7 @@
 package meta;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -9,6 +11,7 @@ public class Borne_finder
 	// ---------------------------- BORNE SUP ------------------------------------------
 	public static Solution find_sup(Graph graphe)
 	{
+		Instant debut = Instant.now();
 		int temps = 0 ;
 		Iterator<Node_evac> it = graphe.getNodes_evac().iterator() ;
 		ArrayList<Solution_Node> liste_solnode= new ArrayList<Solution_Node>();
@@ -20,7 +23,10 @@ public class Borne_finder
 			temps = temps+t ;
 			
 		}
-		Solution sol = new Solution("sol_sup", graphe.getNodes_evacSize(), liste_solnode ,  temps, 0, "borne sup",graphe);
+
+		Solution sol = new Solution("borne_sup_" + graphe.getFilename(), graphe.getNodes_evacSize(), liste_solnode ,  temps, 0, "borne sup",graphe);
+		Instant fin = Instant.now();
+		sol.setTempsCalcul(Duration.between(debut, fin).toMillis());
 		return sol ;			
 	}
 	
@@ -52,6 +58,7 @@ public class Borne_finder
 	// Trouve la borne inf: si on les fait partir tous à 0 quel temps ca met ?
 	public static Solution find_inf(Graph graphe)
 	{
+		Instant debut = Instant.now();
 		int temps = 0 ;
 		Iterator<Node_evac> it = graphe.getNodes_evac().iterator() ;
 		ArrayList<Solution_Node> liste_solnode= new ArrayList<Solution_Node>();
@@ -65,7 +72,10 @@ public class Borne_finder
 				temps = t ;
 			}
 		}
-		Solution sol = new Solution("sol_inf", graphe.getNodes_evacSize(), liste_solnode ,  temps, 0, "borne inf",graphe);
+		
+		Solution sol = new Solution("sol_inf_" + graphe.getFilename(), graphe.getNodes_evacSize(), liste_solnode ,  temps, 0, "borne inf",graphe);
+		Instant fin = Instant.now();
+		sol.setTempsCalcul(Duration.between(debut, fin).toMillis());
 		return sol ;
 	}
 	

@@ -9,7 +9,7 @@ public class Graph
 	
 	//TODO: si l'algo est trop lent -> faire une map // pas besoin car on utilise directement les listes associées aux nodes, acces direct
 	
-	
+	private String filename;
 	private ArrayList<Node> nodes ;
 	private ArrayList<Edge> edges ;
 	private ArrayList<Node_evac> nodes_evac ;
@@ -26,6 +26,14 @@ public class Graph
 		this.edges = new ArrayList<Edge>() ;
 		this.nodes_evac = new ArrayList<Node_evac>() ;
 		this.time=0;
+	}
+	
+	public void setFilename(String f) {
+		this.filename = f;
+	}
+	
+	public String getFilename() {
+		return this.filename;
 	}
 	
 	public void reset() {

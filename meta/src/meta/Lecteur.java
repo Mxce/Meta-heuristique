@@ -1,6 +1,7 @@
 package meta;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -15,6 +16,7 @@ public class Lecteur
 		BufferedReader reader ;
 		try
 		{	
+			File f = new File(fichier);
 			//récupération de la ligne
 			reader = new BufferedReader(new FileReader(fichier)) ;
 			String ligne = reader.readLine() ;
@@ -109,12 +111,14 @@ public class Lecteur
 			
 			
 			reader.close();
+			graphe.setFilename(f.getName());
 		}
 		catch (IOException e)
 		{
 			e.printStackTrace();
 		}
 		graphe.setAverages();
+		
 		return graphe ;
 	}
 }

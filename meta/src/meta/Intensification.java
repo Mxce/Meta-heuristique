@@ -1,5 +1,7 @@
 package meta;
 
+import java.time.Duration;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -7,6 +9,9 @@ public class Intensification
 {
 	public static Solution recherche(Graph graphe, Solution solution)
 	{
+		
+		Instant debut = Instant.now();
+		
 		int decal = (graphe.getAverageEdgeTime()*graphe.getAverageRoadSize())/10;
 		System.out.println("decal : "+decal);
 		// on parcourt tous les solution nodes
@@ -44,7 +49,11 @@ public class Intensification
 			
 			// on passe à la suivante
 			}
-			
+		
+		Instant fin = Instant.now();
+		solution.setNom("intens_"+ graphe.getFilename() );
+		solution.setMethode("Intensification");
+		solution.setTempsCalcul(Duration.between(debut, fin).toMillis());
 		return solution ;	
 	
 	}

@@ -1,5 +1,6 @@
 package meta;
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class Principale 
@@ -15,9 +16,22 @@ public class Principale
 		///TODO: borne sup en lançant les route une après l'autre et checker si le sup est valide (il doit l'etre!!)
 		
 		
-		Graph graphe = Lecteur.readData("Instances\\exemple.txt");
+		//Graph graphe = Lecteur.readData("Instances\\exemple.txt");
 		
+		File fold = new File("Instances");
+		File[] listOfInstances = fold.listFiles();
+		int ind =0;
+		for (File f : listOfInstances){
+			Graph graphe = Lecteur.readData(f.getPath());
+			Borne_finder.find_inf(graphe).writeToFile();
+			Solution sup = Borne_finder.find_sup(graphe);
+			sup.writeToFile();
+			Intensification.recherche(graphe, sup).writeToFile();
+			ind++;
+			System.out.println("AVANCEMENT : " + ind);
+		}
 		
+		/*
 		// test checker
 		// on créé une solution à la main mais il faudrait la lire !!
 		ArrayList<Solution_Node> sol_node = new ArrayList<Solution_Node>() ;
@@ -50,19 +64,8 @@ public class Principale
 		Solution divers = Diversification.diversification(graphe);
 		System.out.println("divers: "+ divers);
 		divers.writeToFile();
-	/*	
-		graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/dense_10_30_3_7.full");
-		System.out.println("inf: "+Borne_finder.find_inf(graphe));
-		System.out.println("sup: "+Borne_finder.find_sup(graphe));
-		
-		graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/medium_10_30_3_8.full");
-		System.out.println("inf: "+Borne_finder.find_inf(graphe));
-		System.out.println("sup: "+Borne_finder.find_sup(graphe));
-		
-		graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/sparse_10_30_3_3.full");
-		System.out.println("inf: "+Borne_finder.find_inf(graphe));
-		System.out.println("sup: "+Borne_finder.find_sup(graphe));
-	*/	
+		*/
+
 		
 		
 	}
