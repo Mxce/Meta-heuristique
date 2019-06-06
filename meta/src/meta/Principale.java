@@ -32,8 +32,12 @@ public class Principale
 		
 		//System.out.println(valide);
 		
+		graphe = Lecteur.readData("Instances\\dense_10_30_3_7.full");
+		
 		// test bornes
 		// inf
+		
+		
 		System.out.println("inf: "+Borne_finder.find_inf(graphe));
 		
 		// sup
@@ -41,7 +45,7 @@ public class Principale
 		
 		Solution solution_sup = Borne_finder.find_sup(graphe) ;
 		// intensification
-		System.out.println("intens: "+ Recherche_voisinage.recherche(graphe,solution_sup));
+		System.out.println("intens: "+ Intensification.recherche(graphe,solution_sup));
 		
 		
 		System.out.println("divers: "+ Diversification.diversification(graphe));

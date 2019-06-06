@@ -10,6 +10,7 @@ public class Node_evac extends Node
 	private int max_rate;
 	private Route_temps route ;
 	private int capa_route ;
+	private int temps_min;
 	
 	// ---------- constructeur
 	public Node_evac (int id, int pop,int max_r)
@@ -19,6 +20,7 @@ public class Node_evac extends Node
 		this.population=pop;
 		this.max_rate=max_r;
 		this.route = new Route_temps() ;
+		this.temps_min = 0;
 	}
 	
 	// reset
@@ -28,7 +30,21 @@ public class Node_evac extends Node
 		this.route.reset() ;
 	}
 	
-	
+	private int find_temps()
+	{
+		Node_evac ne = this;
+		int temps = 0 ;
+		
+		Iterator<Edge> it = ne.getRoute().getRoute().iterator() ;
+		while(it.hasNext())
+		{
+			Edge e = it.next() ;
+			temps = temps + e.getLength() ;
+		}
+		
+		temps = temps + (ne.getPopDepart()/ne.getCapaRoute()) + (ne.getPopDepart()%ne.getCapaRoute()) ;
+		return temps ;
+	}
 	// ----------- Getter
 	
 	public int getPopulation() {
@@ -58,6 +74,7 @@ public class Node_evac extends Node
 	public void setRoute(ArrayList<Edge> route) {
 		this.route.setRoute(route);
 		this.setCapaRoute();
+		this.temps_min=find_temps();
 	}
 	
 	public void setPop(int p)
@@ -71,6 +88,7 @@ public class Node_evac extends Node
 	{
 		this.route.addToRoute(arc);
 		this.setCapaRoute();
+		this.temps_min=find_temps();
 	}
 	
 	// dit si la route est finie
@@ -100,6 +118,10 @@ public class Node_evac extends Node
 			}
 		}
 		this.capa_route=capa;
+	}
+	
+	public int getTempsMin() {
+		return this.temps_min;
 	}
 
 }

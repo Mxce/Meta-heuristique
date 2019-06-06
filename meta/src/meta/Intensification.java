@@ -3,7 +3,7 @@ package meta;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Recherche_voisinage 
+public class Intensification 
 {
 	public static Solution recherche(Graph graphe, Solution solution)
 	{
@@ -22,9 +22,9 @@ public class Recherche_voisinage
 			Solution sol_prec = solution ;
 			while(cond)
 			{
-				//System.out.println("while");
+				System.out.println("while");
 				// on bouge les departs de la solution
-				Solution sol_test = sol_prec.decale(1,sn, graphe) ;
+				Solution sol_test = sol_prec.decale(100,sn, graphe) ;
 				
 				//System.out.println("sol_test: "+sol_test);
 				

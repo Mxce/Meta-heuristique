@@ -16,7 +16,7 @@ public class Borne_finder
 		{
 			Node_evac ne = it.next();
 			liste_solnode.add(new Solution_Node(ne,temps,ne.getCapaRoute()));
-			int t = find_temps(ne) ;
+			int t = ne.getTempsMin() ;
 			temps = temps+t ;
 			
 		}
@@ -59,7 +59,7 @@ public class Borne_finder
 		{
 			Node_evac ne = it.next();
 			liste_solnode.add(new Solution_Node(ne,0,ne.getCapaRoute()));
-			int t = find_temps(ne) ;
+			int t = ne.getTempsMin() ;
 			if(t>temps)
 			{
 				temps = t ;
@@ -72,20 +72,7 @@ public class Borne_finder
 	
 	// --------------------------- FONCTIONS -----------------------------------------
 	// utile pour trouver les bornes
-	private static int find_temps(Node_evac ne)
-	{
-		int temps = 0 ;
-		
-		Iterator<Edge> it = ne.getRoute().getRoute().iterator() ;
-		while(it.hasNext())
-		{
-			Edge e = it.next() ;
-			temps = temps + e.getLength() ;
-		}
-		
-		temps = temps + (ne.getPopDepart()/ne.getCapaRoute()) + (ne.getPopDepart()%ne.getCapaRoute()) ;
-		return temps ;
-	}
+
 	
 	
 	

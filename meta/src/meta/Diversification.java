@@ -37,10 +37,10 @@ public class Diversification {
 	public static Solution diversification(Graph graphe)
 	{
 		Solution solution = null;
-		int nbIt = 200;
+		int nbIt = 40;
 		
 		while (nbIt>0) {
-			Solution soltemp = Recherche_voisinage.recherche(graphe, find_sup_random(graphe));
+			Solution soltemp = Intensification.recherche(graphe, find_sup_random(graphe));
 			if (solution ==null || soltemp.getObjectif()<solution.getObjectif()) {
 				solution =soltemp;
 			}
