@@ -1,5 +1,8 @@
 package meta;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -99,4 +102,29 @@ public class Solution {
 		}
 		return(this.nom + " objectif: "+ this.objectif + " valide: "+ this.valide + " nodes: "+nodes) ;
 	}
+	
+	public void writeToFile() {
+		String path = "Solutions\\" + nom;
+		String data = this.nom + "\n" + this.nbSommet + "\n";
+		
+		for (Solution_Node sn : this.liste_sol_node) {
+			data = data + sn.getNode().getId() + " " + sn.getTauxEvac() + " " + sn.getDate() + "\n";
+		}
+		if (this.valide) {
+			data = data + "valid \n";
+		}
+		else {
+			data = data + "invalid \n";
+		}
+		data = data + this.objectif + "\n" + this.temps_calcul + "\n" + this.methode;
+		
+		try {
+			Files.createFile(Paths.get(path));
+			Files.write(Paths.get(path), data.getBytes());
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 }

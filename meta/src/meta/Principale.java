@@ -32,7 +32,7 @@ public class Principale
 		
 		//System.out.println(valide);
 		System.out.println("graphe de test");
-		graphe = Lecteur.readData("Instances\\dense_10_30_3_7.full");
+		graphe = Lecteur.readData("Instances\\sparse_10_30_3_3.full");
 		
 		// test bornes
 		// inf
@@ -47,8 +47,9 @@ public class Principale
 		// intensification
 		System.out.println("intens: "+ Intensification.recherche(graphe,solution_sup));
 		
-		
-		System.out.println("divers: "+ Diversification.diversification(graphe));
+		Solution divers = Diversification.diversification(graphe);
+		System.out.println("divers: "+ divers);
+		divers.writeToFile();
 	/*	
 		graphe = Lecteur.readData("/home/marotte/Bureau/4A/S2/Metaheuristique/Instances/dense_10_30_3_7.full");
 		System.out.println("inf: "+Borne_finder.find_inf(graphe));

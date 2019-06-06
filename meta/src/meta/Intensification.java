@@ -7,7 +7,7 @@ public class Intensification
 {
 	public static Solution recherche(Graph graphe, Solution solution)
 	{
-		int decal = (graphe.getAverageEdgeTime()*graphe.getAverageRoadSize())/20;
+		int decal = (graphe.getAverageEdgeTime()*graphe.getAverageRoadSize())/10;
 		System.out.println("decal : "+decal);
 		// on parcourt tous les solution nodes
 		ArrayList<Solution_Node> listeNode = solution.getListe_nodes() ;

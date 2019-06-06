@@ -37,7 +37,7 @@ public class Diversification {
 	public static Solution diversification(Graph graphe)
 	{
 		Solution solution = null;
-		int nbIt = 10;
+		int nbIt = 1;
 		
 		while (nbIt>0) {
 			Solution soltemp = Intensification.recherche(graphe, find_sup_random(graphe));
