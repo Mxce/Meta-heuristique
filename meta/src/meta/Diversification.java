@@ -36,12 +36,11 @@ public class Diversification {
 	}	
 	
 
-	public static Solution diversification(Graph graphe)
+	public static Solution diversification(Graph graphe, int nbTotIt)
 	{
 		Instant debut = Instant.now();
 		
 		Solution solution = null;
-		int nbTotIt = 1;
 		int nbIt = nbTotIt;
 		
 		while (nbIt>0) {
@@ -56,8 +55,7 @@ public class Diversification {
 		
 		
 		Instant fin = Instant.now();
-		solution.setNom("intens_"+ graphe.getFilename() );
-		solution.setMethode("Intensification");
+		solution.setNom("divers_"+ graphe.getFilename() );
 		solution.setTempsCalcul(Duration.between(debut, fin).toMillis());
 		return solution ;	
 	

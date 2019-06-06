@@ -23,10 +23,14 @@ public class Principale
 		int ind =0;
 		for (File f : listOfInstances){
 			Graph graphe = Lecteur.readData(f.getPath());
-			Borne_finder.find_inf(graphe).writeToFile();
-			Solution sup = Borne_finder.find_sup(graphe);
-			sup.writeToFile();
-			Intensification.recherche(graphe, sup).writeToFile();
+			//Borne_finder.find_inf(graphe).writeToFile();
+			//Solution sup = Borne_finder.find_sup(graphe);
+			//sup.writeToFile();
+			//Intensification.recherche(graphe, sup).writeToFile();
+			if (ind%2 !=0) {
+				Diversification.diversification(graphe, 10).writeToFile();
+			}
+
 			ind++;
 			System.out.println("AVANCEMENT : " + ind);
 		}
